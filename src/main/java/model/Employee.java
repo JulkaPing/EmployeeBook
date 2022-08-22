@@ -18,7 +18,7 @@ public class Employee {
 
     public Employee(String name, String country) {
         long unique = Util.uniqueId();
-        System.out.println(String.format("Employee created with id - %s", unique));
+        System.out.printf("Employee created with id - %s", unique);
         this.id = unique;
         this.name = name;
         this.country = country;
@@ -50,4 +50,13 @@ public class Employee {
         this.country = country;
     }
 
+
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", country='" + country + '\'' +
+                '}';
+    }
 }
