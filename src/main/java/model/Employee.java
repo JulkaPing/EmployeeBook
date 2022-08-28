@@ -2,8 +2,6 @@ package model;
 
 import util.Util;
 
-import java.time.LocalDateTime;
-
 public class Employee {
 
     private long id;
@@ -15,7 +13,6 @@ public class Employee {
     public Employee() {
     }
 
-
     public Employee(String name, String country) {
         long unique = Util.uniqueId();
         System.out.printf("Employee created with id - %s", unique);
@@ -23,8 +20,6 @@ public class Employee {
         this.name = name;
         this.country = country;
     }
-
-
 
     public long getId() {
         return id;
@@ -49,7 +44,6 @@ public class Employee {
     public void setCountry(String country) {
         this.country = country;
     }
-
 
     @Override
     public String toString() {

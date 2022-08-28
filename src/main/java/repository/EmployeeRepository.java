@@ -67,7 +67,6 @@ public class EmployeeRepository {
         return false;
     }
 
-
     /**
      * Метод поиска сотрудника по id
      * @param id сотрудника
@@ -108,6 +107,4 @@ public class EmployeeRepository {
         }
         return result;
     }
-
-
 }
