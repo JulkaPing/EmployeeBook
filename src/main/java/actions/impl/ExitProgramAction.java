@@ -1,9 +1,10 @@
-package actions;
+package actions.impl;
 
+import actions.EmployeeAction;
 import input.Input;
 import service.EmployeeService;
 
-public class ExitProgramAction implements EmployeeAction{
+public class ExitProgramAction implements EmployeeAction {
 
     @Override
     public String name() {

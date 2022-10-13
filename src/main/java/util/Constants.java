@@ -1,7 +1,10 @@
 package util;
-public final class Constants {
-    public static final long INCORRECT_ID = -1;
-    private Constants() {
 
-    }
+import lombok.experimental.UtilityClass;
+
+@UtilityClass
+public class Constants {
+    public static final String PATTERN_DATE = "dd-MM-yyyy HH:mm";
+    public static final int INCORRECT_INDEX = -1;
+
 }

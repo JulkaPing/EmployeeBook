@@ -1,12 +1,15 @@
 package start;
 
-import actions.*;
+import actions.EmployeeAction;
+import actions.impl.*;
 import input.ConsoleInput;
 import input.Input;
+import mapper.EmployeeMapper;
+import actions.*;
 import model.Employee;
+import repository.Repository;
+import repository.impl.EmployeeMemRepository;
 import service.EmployeeService;
-
-import java.util.Scanner;
 
 public class StartUI {
     public void init(Input input, EmployeeService employeeService, EmployeeAction[] employeeActions) {
@@ -31,13 +34,18 @@ public class StartUI {
     }
 
     public static void main(String[] args) {
-        Input input = new ConsoleInput();
-        EmployeeService employeeService = new EmployeeService();
-
-        EmployeeAction[] actions = {
+        final Input input = new ConsoleInput();
+        final Repository<Long, Employee> store = new EmployeeMemRepository();
+        final EmployeeService employeeService = new EmployeeService(store, new EmployeeMapper());
+        final EmployeeAction[] actions = {
                 new CreateAction(),
-                new FindAllAction(),
+                new UpdateAction(),
                 new DeleteAction(),
+                new FindAllAction(),
+                new FindByIdAction(),
+                new FindByIntervalDateAction(),
+                new FindByNameAction(),
+                new SortedByOrderAction(),
                 new ExitProgramAction()
         };
         new StartUI().init(input, employeeService, actions);
