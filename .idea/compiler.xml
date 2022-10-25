@@ -9,6 +9,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="EmployeeBook" />
         <module name="EmployeeBook_API" />
+        <module name="EmployeeBook_Lombok" />
       </profile>
     </annotationProcessing>
   </component>

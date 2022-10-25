@@ -2,12 +2,11 @@ package dto;
 
 import lombok.*;
 
-import java.time.LocalDateTime;
-
 @AllArgsConstructor
 @Getter
 @Setter
 @Builder
+@ToString
 public class EmployeeDto {
     private String name;
     private String city;

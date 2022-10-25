@@ -16,26 +16,26 @@ import java.util.stream.Stream;
 
 @RequiredArgsConstructor
 public class EmployeeService {
-    private final Repository<Long, Employee> employeeMemRepository;
+    private final Repository<Long, Employee> employeeRepository;
     private final EmployeeMapper employeeMapper;
 
     public boolean save(EmployeeDto employee) {
-        return employeeMemRepository.save(employeeMapper.fromEmployeeDtoToEmployeeEntity(employee)).getId() != 0;
+        return employeeRepository.save(employeeMapper.fromEmployeeDtoToEmployeeEntity(employee)).getId() != 0;
     }
 
     public boolean update(long id, EmployeeDto employee) {
-        return employeeMemRepository.update(id, employeeMapper.fromEmployeeDtoToEmployeeEntity(employee));
+        return employeeRepository.update(id, employeeMapper.fromEmployeeDtoToEmployeeEntity(employee));
     }
     public boolean delete(long id) {
-        return employeeMemRepository.delete(id);
+        return employeeRepository.delete(id);
     }
 
     public Optional<EmployeeDto> findById(long id) {
-        return employeeMemRepository.findById(id)
+        return employeeRepository.findById(id)
                 .map(employeeMapper::fromEmployeeToEmployeeDto);
     }
     public List<EmployeeDto> findAll(Ordered ordered) {
-        List<EmployeeDto> employees = getMappingData(employeeMemRepository.findAll().stream());
+        List<EmployeeDto> employees = getMappingData(employeeRepository.findAll().stream());
         switch (ordered) {
             case ASC: {
                 employees.sort(new EmployeeComparatorAsc());
@@ -53,11 +53,11 @@ public class EmployeeService {
     }
 
     public List<EmployeeDto> findAllByName(String name) {
-        return getMappingData(employeeMemRepository.findByName(name).stream());
+        return getMappingData(employeeRepository.findByName(name).stream());
     }
 
     public List<EmployeeDto> findAllByIntervalDate(String start, String end) {
-        return getMappingData(employeeMemRepository.findByCreateDateInterval(
+        return getMappingData(employeeRepository.findByCreateDateInterval(
                 employeeMapper.parseDate(start), employeeMapper.parseDate(end)
         ).stream());
     }
