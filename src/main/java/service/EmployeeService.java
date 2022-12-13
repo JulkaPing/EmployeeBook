@@ -62,6 +62,10 @@ public class EmployeeService {
         ).stream());
     }
 
+    public void closeAllSession() {
+        employeeRepository.close();
+    }
+
     private List<EmployeeDto> getMappingData(Stream<Employee> employees) {
         return employees
                 .map(employeeMapper::fromEmployeeToEmployeeDto)

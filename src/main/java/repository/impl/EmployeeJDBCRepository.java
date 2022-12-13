@@ -13,7 +13,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 @Slf4j
-public class EmployeeDataBaseRepository implements Repository<Long, Employee> {
+public class EmployeeJDBCRepository implements Repository<Long, Employee> {
 
     private Connection connection;
 
@@ -188,5 +188,16 @@ public class EmployeeDataBaseRepository implements Repository<Long, Employee> {
             log.error("Exception in findByCreateDateInterval method. {}, {}", sqlexception, sqlexception.getMessage());
         }
         return rsl;
+    }
+
+    @Override
+    public void close() {
+        try {
+            connection.close();
+            log.info("Session is closed.");
+        } catch (SQLException sqlException) {
+            log.error("Incorrect close session. Message - {}", sqlException.getMessage());
+        }
+
     }
 }

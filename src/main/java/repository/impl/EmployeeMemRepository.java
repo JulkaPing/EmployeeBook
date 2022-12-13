@@ -104,6 +104,12 @@ public class EmployeeMemRepository implements Repository<Long, Employee> {
                 .filter(afterDate.and(beforeDate))
                 .collect(Collectors.toList());
     }
+
+    @Override
+    public void close() {
+        log.info("This is mem repository. Session is not found.");
+    }
+
     /**
      * Возвращает под каким индексом находится пользователь
      * @param id пользователя

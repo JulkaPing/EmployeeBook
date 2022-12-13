@@ -13,5 +13,5 @@ public interface Repository<K, V> {
     public List<V> findAll();
     public List<V> findByName(String name);
     public List<V> findByCreateDateInterval(LocalDateTime start, LocalDateTime end);
-
+    public void close();
 }
